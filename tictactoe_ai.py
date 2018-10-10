@@ -21,12 +21,12 @@ class GUI:
     self.buttons = {}
     for x,y in self.board.fields:
       handler = lambda x=x,y=y: self.move(x,y)
-      button = Button(self.app, command=handler, font=self.font, width=3, height=3)
+      button = Button(self.app, command=handler, font=self.font, width=5, height=4, anchor='center', justify= 'right')
       button.grid(row=y, column=x)
       self.buttons[x,y] = button
     handler = lambda: self.reset()
     button = Button(self.app, text='reset', command=handler)
-    button.grid(row=self.board.size+1, column=0, columnspan=self.board.size, sticky="WE")
+    button.grid(row=self.board.size+1, column=0, columnspan=self.board.size, sticky="NSEW")
     self.update()
  
   def reset(self):
@@ -167,4 +167,3 @@ class Board:
         string+=self.fields[x,y]
       string+="\n"
     return string
-
